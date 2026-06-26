@@ -1,16 +1,405 @@
-/* Здесь вы напишете основную часть стилей страницы.
+@supports (font-variation-settings: normal) {
+  .page {
+    font-family: var(--variable-font-main), sans-serif;
+  }
+}
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+@supports (
+  (text-stroke: 1px var(--background-color)) or
+    (-webkit-text-stroke: 1px var(--background-color))
+) {
+  .card-watermark {
+    -webkit-text-stroke: 1px var(--background-color);
+    text-stroke: 1px var(--background-color);
+    text-shadow: none;
+  }
+}
 
-*/
+.header,
+.header__title,
+.like-icon,
+.button__text {
+  font-family: var(--variable-font), fantasy;
+}
+
+/* Стили страницы */
 
 .page {
   min-inline-size: 320px;
-  min-block-size: 100dvb;
+  inline-size: 100%;
+  font-variation-settings: "wght" var(--font-weight-main, 400);
+  font-size: var(--font-size-main);
+}
+
+.overlay-background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  max-block-size: 960px;
+  background-image: var(--background-main-image);
+}
+
+/* Стили header */
+
+.header {
+  padding-block-start: var(--header-padding);
+  padding-block-end: var(--header-padding);
+}
+
+.header__body {
+  padding-block-start: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
+  padding-block-end: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem);
+}
+
+.header__body,
+.save__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--background-color);
+  border: var(--outline-main);
+}
+
+.card__list-item {
+  background-color: var(--background-color);
+  min-inline-size: 100%;
+  border: var(--outline-main);
+}
+
+.header__logo,
+.header__title,
+.dialog__text {
+  align-self: center;
+  text-transform: uppercase;
+}
+
+.header__logo {
+  font-size: clamp(3.063rem, 2.7109rem + 1.5023vw, 4.063rem);
+  line-height: 1;
+  font-variation-settings: "wght" var(--font-weight-main, 400);
+}
+
+.button__text {
+  align-items: center;
+  line-height: var(--line-height-text-botton);
+  font-size: 0.875rem;
+  color: var(--accent-color-text);
+}
+
+.header__title {
+  font-size: clamp(0.875rem, 0.6768rem + 0.8458vw, 1.438rem);
+  margin-top: 20px;
+}
+
+.card__list-description {
+  position: relative;
+}
+
+.card__list-title {
+  font-size: inherit;
+  padding-block-start: 4px;
+  padding-block-end: 6px;
+  padding-inline: 10px;
+  font-variation-settings: "wght" var(--font-weight-title, 700);
+  border-bottom: var(--outline-main);
+}
+
+.card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.card__image {
+  object-position: center center;
+  object-fit: cover;
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+/* Фильтры на изображения */
+
+.filter-blur label {
+  text-wrap: nowrap;
+}
+
+.grayscale-filter img {
+  filter: grayscale(0.7);
+}
+
+.opacity-filter img {
+  filter: opacity(0.8);
+}
+
+.mix-filter img {
+  filter: invert(0.7) contrast(1) brightness(100%);
+}
+
+.contrast-filter img {
+  filter: contrast(20%);
+}
+
+.invert-filter img {
+  filter: invert(0.7);
+}
+
+.sepia-filter img {
+  filter: sepia(80%);
+}
+
+.blur-filter img {
+  filter: blur(0.2rem);
+}
+
+.hue-rotate-filter img {
+  filter: hue-rotate(0.5turn);
+}
+
+.card__text-paragrapf {
+  padding: var(--text-padding);
+  line-height: var(--line-height-text);
+}
+
+.text:not(:last-child) {
+  margin-block-end: var(--margin-block-end);
+}
+
+.card-watermark {
+  font-family: var(--variable-font), var(--system-font);
+  font-size: 0.85rem;
+  opacity: 50%;
+  position: absolute;
+  inset-inline-end: clamp(0.75rem, 0.4859rem + 1.1268vw, 1.5rem);
+  inset-block-start: clamp(1.5rem, 1.4778rem + 0.0946vw, 1.563rem);
+  text-shadow:
+    -1px 0 var(--background-color),
+    0 1px var(--background-color),
+    1px 0 var(--background-color),
+    0 -1px var(--background-color);
+  mix-blend-mode: hard-light;
+  z-index: 1;
+}
+
+.card__item-button {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 8px;
+  margin-block: 25px;
+  margin-inline: 25px;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  transition: border 0.3s ease;
+  outline: 0;
+  border: 0;
+  padding: 0;
+}
+
+svg.like-icon {
+  display: grid;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  outline: 0;
+}
+
+.card__like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 130px;
+  block-size: 38px;
+  flex-wrap: wrap;
+  align-content: center;
+  border: var(--outline-main);
+}
+
+.save__button {
+  margin: auto;
+  border: var(--outline-main);
+  text-wrap: nowrap;
+  gap: 8px;
+  margin-top: 52px;
+  margin-bottom: 100px;
+  padding-block-start: 15px;
+  padding-block-end: 15px;
+  padding-inline-start: 20px;
+  padding-inline-end: 20px;
+}
+
+.button {
+  position: relative;
+  background-color: var(--background-color);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  transform-origin: left;
+}
+
+.button:hover::before {
+  transform: scaleX(1);
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+.floppy {
+  width: 28px;
+}
+
+.floppy-dialog {
+  width: 39px;
+}
+
+.button__text,
+.floppy,
+.floppy-dialog {
+  position: relative;
+  mix-blend-mode: difference;
+  color: var(--accent-color-text);
+  z-index: 2;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--heart-contour-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon:hover .core {
+  fill: var(--heart-contour-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--heart-body-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon:active .core {
+  fill: var(--heart-body-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--heart-body-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--heart-body-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--heart-body-color);
+  transition: fill 0.3s 0.06s linear;
+}
+
+.like-icon .contour {
+  fill: var(--heart-contour-color);
+  transition: fill 0.1s linear;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.is-liked .heart {
+  animation: heart 0.3s 0.1s ease-in;
+  animation-direction: normal;
+  transform-origin: center;
+}
+
+.sparks {
+  fill: var(--heart-body-color);
+  opacity: 0;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks 0.3s 0.3s ease-in;
+  animation-direction: normal;
+  transform-origin: center;
+}
+
+dialog:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+  position: fixed;
+  inset: 0;
+}
+
+.dialog__title {
+  display: grid;
+  max-inline-size: min-content;
+  padding-inline-start: 42px;
+  padding-inline-end: 42px;
+  padding-block-start: 31px;
+  padding-block-end: 31px;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+  outline: var(--outline-main);
+  border: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.dialog__item {
+  display: flex;
+  gap: 20px;
+}
+
+.dialog__text {
+  text-wrap: wrap;
+  line-height: var(--line-height-dialog);
+}
+
+dialog::backdrop {
+  -webkit-backdrop-filter: brightness(25%);
+  backdrop-filter: brightness(25%);
+}
+
+.dialog__button {
+  min-inline-size: 257px;
+  align-items: center;
+  block-size: 38px;
+  padding: 9px 17px;
+  border: var(--outline-main);
+}
+
+@media (width >= 376px) {
+  .page {
+    max-inline-size: 700px;
+  }
+
+  .save__button {
+    white-space: nowrap;
+    flex-direction: row;
+  }
+
+  svg.floppy {
+    width: 21px;
+  }
+
+  .dialog__title {
+    padding-inline-start: 32px;
+    padding-inline-end: 32px;
+  }
+
+  .dialog__button {
+    min-inline-size: 293px;
+  }
 }
