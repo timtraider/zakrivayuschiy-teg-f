@@ -2,12 +2,10 @@
   --variable-font-main: "Inter-Variable";
   --variable-font: "PressStart2P";
   --system-font: sans-serif;
-  --color-text: rgba(0, 0, 0, 1);
   --font-size-main: 18px;
-  --font-weight-main: 400;
-  --font-weight-title: 700;
+  --font-weight-main: 410;
+  --font-weight-title: 715;
   --line-height-text: 1.167;
-  --line-height-botton-text: 0.9;
   --line-height-dialog: 1.5;
   --background-color: rgba(255, 255, 255, 1);
   --background-main-image:
@@ -27,10 +25,6 @@
   --card-gap: 50px;
   --text-padding: 25px 25px 0;
   --margin-block-end: 27px;
-  --fill-floppy: rgba(0, 0, 0, 1);
   --accent-color: rgba(0, 0, 0, 1);
   --accent-color-text: rgba(255, 255, 255, 1);
-  --box-shadow-focus: 2px 2px 0px 0px rgba(0, 0, 0, 1);
-  --heart-contour-color: rgba(0, 0, 0, 1);
-  --heart-body-color: rgba(255, 0, 0, 1);
 }
