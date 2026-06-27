@@ -27,4 +27,6 @@
   --margin-block-end: 27px;
   --accent-color: rgba(0, 0, 0, 1);
   --accent-color-text: rgba(255, 255, 255, 1);
+  --heart-contour-color: rgba(0, 0, 0, 1);
+  --heart-body-color: rgba(255, 0, 0, 1);
 }
