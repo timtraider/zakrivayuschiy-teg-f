@@ -141,7 +141,7 @@
   filter: hue-rotate(0.5turn);
 }
 
-.card__text-paragrapf {
+.card__text-paragraph {
   padding: var(--text-padding, 25px 25px 0);
   line-height: var(--line-height-text, 1.167);
 }
@@ -167,12 +167,10 @@
 }
 
 @supports (
-  (text-stroke: 1px var(--background-color, #fff)) or
     (-webkit-text-stroke: 1px var(--background-color, #fff))
 ) {
   .card-watermark {
     -webkit-text-stroke: 1px var(--background-color, #fff);
-    text-stroke: 1px var(--background-color, #fff);
     text-shadow: none;
   }
 }
@@ -264,7 +262,7 @@
 
 svg.like-icon {
     display: grid;
-    position: absolute;
+    margin: -2px;
     justify-content: center;
     align-items: center;
     align-content: center;
