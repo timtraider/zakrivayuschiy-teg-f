@@ -274,8 +274,8 @@ svg.like-icon {
 .floppy {
   position: relative;
   display: block;
-  block-size: 21px;
-  inline-size: 21px;
+  block-size: 28px;
+  inline-size: 28px;
   margin-block-end: 1px;
   transition: color 1s ease;
   z-index: 1;
@@ -295,12 +295,10 @@ svg.like-icon {
 }
 
 .dialog {
-  display: grid;
-  max-inline-size: min-content;
-  padding-inline-start: 42px;
-  padding-inline-end: 42px;
-  padding-block-start: 31px;
-  padding-block-end: 31px;
+  display: flex;
+  max-inline-size: 345px;
+  padding-inline: 37px;
+  padding-block: 27px;
   gap: 30px;
   flex-direction: column;
   justify-content: center;
@@ -321,9 +319,16 @@ dialog:not([open]) {
   gap: 20px;
 }
 
+.dialog__form {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+}
+
 .dialog__text {
   text-wrap: wrap;
   line-height: var(--line-height-dialog, 1.5);
+  inline-size: 200px;
 }
 
 dialog::backdrop {
@@ -332,19 +337,19 @@ dialog::backdrop {
 }
 
 .dialog__button {
-  min-inline-size: 257px;
   align-items: center;
   block-size: 38px;
   padding: 9px 17px;
   border: var(--outline-main, 2px solid rgba(0, 0, 0, 1));
 }
 
-@media (width >= 375px) {
+@media (width >= 376px) {
   .page {
     max-inline-size: 700px;
   }
 
   .save__button {
+    margin-top: 44px;
     white-space: nowrap;
     flex-direction: row;
   }
@@ -354,8 +359,7 @@ dialog::backdrop {
   }
 
   .dialog {
-    padding-inline-start: 32px;
-    padding-inline-end: 32px;
+    padding-inline: 27px;
   }
 
   .dialog__button {
